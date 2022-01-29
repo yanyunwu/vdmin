@@ -1,0 +1,17 @@
+
+
+.v-navigation-drawer__content::-webkit-scrollbar{
+  width: 3px;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+.v-navigation-drawer__content::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+
+/*定义滑块 内阴影+圆角*/
+.v-navigation-drawer__content::-webkit-scrollbar-thumb{
+  border-radius: 10px;
+  background-color: #ccc;
+}

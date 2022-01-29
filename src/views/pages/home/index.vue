@@ -1,5 +1,12 @@
 <template>
-  <div>首页</div>
+  <div>
+    <v-container>
+      <v-row>首页</v-row>
+      <v-row>
+        <v-btn color="primary" @click="setColor">按钮</v-btn>
+      </v-row>
+    </v-container>
+  </div>
 </template>
 
 <script>
@@ -17,6 +24,9 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+    setColor() {
+      this.$vuetify.theme.themes.light.primary = "#4caf50";
     }
   }
 };

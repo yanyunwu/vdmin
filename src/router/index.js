@@ -13,6 +13,10 @@ const staticRoutes = [
   {
     path: "/home",
     name: "Home",
+    meta: {
+      title: "主页",
+      layout: "base-layout"
+    },
     component: Home
   },
   {
