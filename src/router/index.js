@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "@/views/pages/home/index.vue";
+import store from "../store";
 
 Vue.use(VueRouter);
 
@@ -9,15 +9,6 @@ const staticRoutes = [
     path: "/",
     name: "Home",
     redirect: "/home"
-  },
-  {
-    path: "/home",
-    name: "Home",
-    meta: {
-      title: "主页",
-      layout: "base-layout"
-    },
-    component: Home
   },
   {
     path: "/login",
@@ -30,6 +21,43 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes: staticRoutes
+});
+// 获取路由列表
+const routeList = store.state.routeList.routeList;
+
+// 加载路由组件
+const loadview = (component) => {
+  if (!component) return () => import(`@/views/components/noComponent.vue`);
+  return () => import(`@/views/pages/${component}`);
+};
+
+// 处理路由信息
+const handleRoute = (route) => {
+  if (route.meta && !route.meta.layout) route.meta.layout = "base-layout";
+  route.component = loadview(route.component);
+  return route;
+};
+
+// 添加路由
+const addRoutes = () => {
+  for (let item of routeList) {
+    if (item.children) {
+      item.children.forEach((item) => {
+        router.addRoute(handleRoute(item));
+      });
+    } else {
+      router.addRoute(handleRoute(item));
+    }
+  }
+};
+
+addRoutes();
+
+router.beforeEach((to, from, next) => {
+  if (!routeList.length) {
+    addRoutes();
+  }
+  next();
 });
 
 export default router;

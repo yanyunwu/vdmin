@@ -2,12 +2,11 @@ export default {
   state: () => ({
     routeList: [
       {
-        path: "/homepage",
-        name: "homepage",
-        component: "/HomePage/Home.vue",
+        path: "/home",
+        component: "home",
         meta: {
           title: "首页",
-          layout: "basepages",
+          layout: "base-layout",
           isHide: false,
           isKeepAlive: false,
           icon: " mdi-home"
@@ -23,11 +22,9 @@ export default {
         children: [
           {
             path: "/AccountList",
-            name: "AccountList",
-            component: "/AccountList",
+            component: "",
             meta: {
               title: "账户列表",
-              layout: "basepages",
               isHide: false,
               isKeepAlive: false,
               icon: "mdi-account-edit-outline"
@@ -35,11 +32,9 @@ export default {
           },
           {
             path: "/RolesList",
-            name: "RolesList",
-            component: "/RolesList",
+            component: "",
             meta: {
               title: "角色列表",
-              layout: "basepages",
               isHide: false,
               isKeepAlive: false,
               icon: "mdi-account-edit-outline"
@@ -57,11 +52,10 @@ export default {
         children: [
           {
             path: "/providerList",
-            name: "providerList",
-            component: "/ProviderList",
+            component: "",
             meta: {
               title: "服务商详情",
-              layout: "basepages",
+
               isHide: false,
               isKeepAlive: false,
               icon: "mdi-bike"
@@ -79,11 +73,10 @@ export default {
         children: [
           {
             path: "/commodityadd",
-            name: "commodityadd",
-            component: "/CommodityAdd/index.vue",
+            component: "",
             meta: {
               title: "商品浏览",
-              layout: "basepages",
+
               isHide: false,
               isKeepAlive: false,
               icon: "mdi-plus-thick"
@@ -91,11 +84,10 @@ export default {
           },
           {
             path: "/commoditylist",
-            name: "commoditylist",
-            component: "/CommodityList/index.vue",
+            component: "",
             meta: {
               title: "商品列表",
-              layout: "basepages",
+
               isHide: false,
               isKeepAlive: false,
               icon: "mdi-clipboard-list-outline"
@@ -103,11 +95,10 @@ export default {
           },
           {
             path: "/CommodityRecycle",
-            name: "CommodityRecycle",
-            component: "/CommodityRecycle",
+            component: "",
             meta: {
               title: "回收站",
-              layout: "basepages",
+
               isHide: false,
               isKeepAlive: false,
               icon: "mdi-dots-grid"
@@ -125,11 +116,10 @@ export default {
         children: [
           {
             path: "/purchaseOrder",
-            name: "purchaseOrder",
-            component: "/Order/index.vue",
+            component: "",
             meta: {
               title: "采购订单",
-              layout: "basepages",
+
               isHide: false,
               isKeepAlive: false,
               icon: "mdi-file-document-outline"
@@ -137,11 +127,10 @@ export default {
           },
           {
             path: "/UserOrder",
-            name: "UserOrder",
-            component: "/UserOrder/index.vue",
+            component: "",
             meta: {
               title: "用户订单",
-              layout: "basepages",
+
               isHide: false,
               isKeepAlive: false,
               icon: "mdi-clipboard-account-outline"
@@ -159,11 +148,10 @@ export default {
         children: [
           {
             path: "/deviceHome",
-            name: "deviceHome",
-            component: "/DeviceHome",
+            component: "",
             meta: {
               title: "用户设备",
-              layout: "basepages",
+
               isHide: false,
               isKeepAlive: false,
               icon: "mdi-cart-outline"
@@ -171,11 +159,10 @@ export default {
           },
           {
             path: "/deviceGrow",
-            name: "deviceGrow",
-            component: "/DeviceGrow",
+            component: "",
             meta: {
               title: "育苗设备",
-              layout: "basepages",
+
               isHide: false,
               isKeepAlive: false,
               icon: "mdi-cart-outline"
@@ -193,11 +180,10 @@ export default {
         children: [
           {
             path: "/financeinfo",
-            name: "financeinfo",
-            component: "/FinanceInfo",
+            component: "",
             meta: {
               title: "财务信息",
-              layout: "basepages",
+
               isHide: false,
               isKeepAlive: false,
               icon: "mdi-currency-usd"
@@ -205,11 +191,10 @@ export default {
           },
           {
             path: "/syslog",
-            name: "syslog",
-            component: "/SysLog",
+            component: "",
             meta: {
               title: "日志",
-              layout: "basepages",
+
               isHide: false,
               isKeepAlive: false,
               icon: "mdi-note-text"
@@ -217,11 +202,10 @@ export default {
           },
           {
             path: "/about",
-            name: "about",
-            component: "/About",
+            component: "",
             meta: {
               title: "关于我们",
-              layout: "basepages",
+
               isHide: false,
               isKeepAlive: false,
               icon: "mdi-information-variant"
@@ -231,19 +215,19 @@ export default {
       },
       {
         meta: {
-          title: "其他",
+          title: "系统设置",
           isHide: false,
           isKeepAlive: false,
           icon: "mdi-checkbox-multiple-blank-outline"
         },
         children: [
           {
-            path: "/sysback",
-            name: "sysback",
-            component: "/Sysback",
+            path: "/sys/menu",
+            name: "menu",
+            component: "menu",
             meta: {
-              title: "系统反馈",
-              layout: "basepages",
+              title: "菜单设置",
+              layout: "base-layout",
               isHide: false,
               isKeepAlive: false,
               icon: "mdi-message-alert"
@@ -253,11 +237,10 @@ export default {
       },
       {
         path: "/platformuser",
-        name: "platformuser",
-        component: "/PlatformUser",
+        component: "",
         meta: {
           title: "个人信息",
-          layout: "basepages",
+
           isHide: true,
           isKeepAlive: false,
           icon: ""

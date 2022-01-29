@@ -5,6 +5,15 @@
       <v-row>
         <v-btn color="primary" @click="setColor">按钮</v-btn>
       </v-row>
+      <v-row>
+        <v-btn color="primary" @click="setColor">按钮</v-btn>
+      </v-row>
+      <v-row>
+        <v-btn color="primary" @click="setColor">按钮</v-btn>
+      </v-row>
+      <v-row>
+        <v-btn color="primary" @click="setColor">按钮</v-btn>
+      </v-row>
     </v-container>
   </div>
 </template>
