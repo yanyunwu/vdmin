@@ -18,7 +18,7 @@
               <v-icon small>fas fa-sort-down</v-icon>
             </template>
 
-            <v-list-item v-for="child in item.children" :key="child.meta.title" :to="child.path">
+            <v-list-item v-for="child in item.children" :key="child.meta.title" :to="child.path" @click="addTab(child)">
               <v-list-item-icon>
                 <v-icon v-text="child.meta.icon" small></v-icon>
               </v-list-item-icon>
@@ -29,7 +29,7 @@
 
         <!-- 非父级路由 -->
         <template v-else>
-          <v-list-item :key="item.meta.title" :to="item.path">
+          <v-list-item :key="item.meta.title" :to="item.path" @click="addTab(item)">
             <v-list-item-icon>
               <v-icon small>{{ item.meta.icon }}</v-icon>
             </v-list-item-icon>
@@ -45,10 +45,17 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
 export default {
   computed: {
     routeList() {
       return this.$store.state.routeList.routeList;
+    }
+  },
+  methods: {
+    ...mapMutations(["insertTab"]),
+    addTab(route) {
+      this.insertTab({ title: route.meta.title, path: route.path });
     }
   }
 };

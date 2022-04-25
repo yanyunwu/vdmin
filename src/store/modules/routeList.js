@@ -1,3 +1,5 @@
+import router from "@/router";
+
 export default {
   state: () => ({
     routeList: [
@@ -246,6 +248,41 @@ export default {
           icon: ""
         }
       }
+    ],
+    breadcrumbList: [],
+    TheNavTabs: [
+      {
+        title: "首页",
+        path: "/home"
+      }
+      // {
+      //   title: "菜单管理",
+      //   path: "/aaa"
+      // },
+      // {
+      //   title: "医院管理",
+      //   path: "/aab"
+      // },
+      // {
+      //   title: "菜单管理",
+      //   path: "/aca"
+      // }
     ]
-  })
+  }),
+  mutations: {
+    /** navbar相关操作 */
+    insertTab(state, route) {
+      if (state.TheNavTabs.some((item) => item.path === route.path)) return;
+      state.TheNavTabs.push(route);
+    },
+    deleteTab(state, route) {
+      let TheNavTabs = state.TheNavTabs;
+      let path = route.path;
+      let index = TheNavTabs.findIndex((item) => item.path === path && item.path !== "/home");
+      if (index > -1) {
+        if (router.currentRoute.path === path) router.push(TheNavTabs[index - 1].path);
+        state.TheNavTabs.splice(index, 1);
+      }
+    }
+  }
 };
