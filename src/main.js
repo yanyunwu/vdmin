@@ -6,7 +6,6 @@ import baseLayout from "./views/layout/baseLayout.vue";
 import noLayout from "./views/layout/noLayout.vue";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "@mdi/font/css/materialdesignicons.css";
-import "./server";
 import vuetify from "./plugins/vuetify";
 import "./styles/test.css";
 

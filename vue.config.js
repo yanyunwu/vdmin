@@ -25,13 +25,13 @@ module.exports = {
     proxy: {
       [baseUrl]: {
         // 服务器的地址
-        target: "自定义",
+        target: "http://api.test.com/",
         // 如果是https请设置为true
-        secure: true,
-        changeOrigin: true,
-        pathRewrite: {
-          [`^${baseUrl}`]: ""
-        }
+        // secure: true,
+        changeOrigin: true
+        // pathRewrite: {
+        //   [`^${baseUrl}`]: ""
+        // }
       }
     }
   },

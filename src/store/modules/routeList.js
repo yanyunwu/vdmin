@@ -226,7 +226,7 @@ export default {
           {
             path: "/sys/menu",
             name: "menu",
-            component: "menu",
+            component: "system/menu",
             meta: {
               title: "菜单设置",
               layout: "base-layout",

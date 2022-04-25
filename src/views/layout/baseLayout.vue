@@ -32,7 +32,7 @@ export default {
     subDrawer
   },
   methods: {
-    ...mapMutations(["insertBreadcrumb"])
+    ...mapMutations(["insertBreadcrumb", "insertTab"])
   },
   watch: {
     $route(route) {
@@ -41,6 +41,7 @@ export default {
   },
   created() {
     this.insertBreadcrumb(this.$route.path);
+    this.insertTab({ title: this.$route.meta.title, path: this.$route.path });
   }
 };
 </script>
