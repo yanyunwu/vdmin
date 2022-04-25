@@ -11,7 +11,7 @@ module.exports = {
   // 设置静态资源的存储(相对于打包目录)
   assetsDir: "static",
   // 模式node_modules里的高级语法不编译，在这里设置允许编译
-  transpileDependencies: ["vuetify"],
+  // transpileDependencies: ["vuetify"],
   // 动态设置打包地址
   publicPath: isProd ? "./" : "/",
 

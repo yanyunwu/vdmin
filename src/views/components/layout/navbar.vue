@@ -10,6 +10,24 @@
         </v-tab>
       </v-tabs>
     </template>
+    <v-spacer></v-spacer>
+    <v-btn icon large><v-icon>mdi-magnify</v-icon></v-btn>
+    <v-menu offset-y open-on-hover>
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn text v-bind="attrs" v-on="on"><v-avatar color="primary" size="36"></v-avatar><span class="pl-2">管理员</span></v-btn>
+      </template>
+      <v-list dense class="pa-0 py-1">
+        <v-list-item class="pa-0 justify-center">
+          <v-btn text class="body-2"><v-icon size="24">mdi-account</v-icon>个人信息</v-btn>
+        </v-list-item>
+        <v-list-item class="pa-0 justify-center">
+          <v-btn text class="body-2"><v-icon size="24">mdi-lock</v-icon>修改密码</v-btn>
+        </v-list-item>
+        <v-list-item class="pa-0 justify-center">
+          <v-btn text class="body-2"><v-icon size="24">mdi-logout</v-icon>退出登录</v-btn>
+        </v-list-item>
+      </v-list>
+    </v-menu>
   </v-app-bar>
 </template>
 

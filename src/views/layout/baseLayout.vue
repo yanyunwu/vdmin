@@ -22,6 +22,7 @@
 <script>
 import navbar from "../components/layout/navbar.vue";
 import subDrawer from "../components/layout/subDrawer.vue";
+import { mapMutations } from "vuex";
 export default {
   data: () => ({
     drawer: true
@@ -29,6 +30,17 @@ export default {
   components: {
     navbar,
     subDrawer
+  },
+  methods: {
+    ...mapMutations(["insertBreadcrumb"])
+  },
+  watch: {
+    $route(route) {
+      this.insertBreadcrumb(route.path);
+    }
+  },
+  created() {
+    this.insertBreadcrumb(this.$route.path);
   }
 };
 </script>

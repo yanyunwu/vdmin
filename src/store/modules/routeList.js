@@ -283,6 +283,27 @@ export default {
         if (router.currentRoute.path === path) router.push(TheNavTabs[index - 1].path);
         state.TheNavTabs.splice(index, 1);
       }
+    },
+    insertBreadcrumb(state, path) {
+      const routeList = state.routeList;
+
+      for (let father of routeList) {
+        let newList = [{ text: father.meta.title }];
+        if (father.children && father.children.length) {
+          for (let child of father.children) {
+            if (child.path === path) {
+              newList.push({ text: child.meta.title });
+              state.breadcrumbList = newList;
+              break;
+            }
+          }
+        } else {
+          if (father.path === path) {
+            state.breadcrumbList = newList;
+            break;
+          }
+        }
+      }
     }
   }
 };
