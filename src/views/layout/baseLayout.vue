@@ -11,7 +11,7 @@
     <sub-drawer v-model="drawer"></sub-drawer>
     <navbar @setdrawer="drawer = !drawer"></navbar>
 
-    <v-main>
+    <v-main class="grey lighten-3">
       <v-scroll-x-transition leave-absolute>
         <slot></slot>
       </v-scroll-x-transition>

@@ -14,9 +14,6 @@
                 <v-list-item-title>{{ item.meta.title }}</v-list-item-title>
               </v-list-item-content>
             </template>
-            <template v-slot:appendIcon>
-              <v-icon small>fas fa-sort-down</v-icon>
-            </template>
 
             <v-list-item v-for="child in item.children" :key="child.meta.title" :to="child.path" @click="addTab(child)">
               <v-list-item-icon>

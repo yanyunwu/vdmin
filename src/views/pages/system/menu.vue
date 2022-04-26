@@ -1,12 +1,54 @@
 <template>
-  <v-card class="ma-2" elevation="1">
-    <v-data-table :headers="headers" :items="desserts" :page.sync="page" :items-per-page="itemsPerPage" hide-default-footer class="pa-3" @page-count="pageCount = $event">
+  <v-card class="ma-1" flat>
+    <v-row class="ma-0" align="center">
+      <v-col cols="2">
+        <v-text-field solo label="Prepend" dense hide-details prepend-inner-icon="mdi-map-marker"></v-text-field>
+      </v-col>
+      <v-col cols="2">
+        <v-text-field solo label="Prepend" dense hide-details prepend-inner-icon="mdi-map-marker"></v-text-field>
+      </v-col>
+      <v-btn text color="blue" @click="show = !show">高级搜索</v-btn>
+    </v-row>
+    <v-scroll-y-transition hide-on-leave>
+      <v-row class="ma-0" align="center" v-if="show">
+        <v-col cols="2">
+          <v-text-field solo label="Prepend" dense hide-details></v-text-field>
+        </v-col>
+        <v-col cols="2">
+          <v-text-field solo label="Prepend" dense hide-details></v-text-field>
+        </v-col>
+        <v-col cols="2">
+          <v-text-field solo label="Prepend" dense hide-details></v-text-field>
+        </v-col>
+        <v-col cols="2">
+          <v-text-field solo label="Prepend" dense hide-details></v-text-field>
+        </v-col>
+      </v-row>
+    </v-scroll-y-transition>
+    <v-data-table
+      :headers="headers"
+      :items="desserts"
+      :page.sync="page"
+      :items-per-page="itemsPerPage"
+      hide-default-footer
+      @page-count="pageCount = $event"
+      :single-expand="false"
+      :expanded.sync="expanded"
+      show-expand
+      item-key="path"
+    >
       <template v-slot:top>
         <div class="pa-1">
-          <v-btn color="success" small outlined class="mx-1"><v-icon dense>mdi-plus</v-icon> 新增 </v-btn>
-          <v-btn color="primary" small outlined class="mx-1"><v-icon dense>mdi-plus</v-icon> 删除 </v-btn>
-          <v-btn color="error" small outlined class="mx-1"><v-icon dense>mdi-plus</v-icon> 展开/折叠 </v-btn>
+          <v-btn color="success" small outlined class="mx-1"><v-icon dense left>mdi-plus</v-icon> 新增 </v-btn>
+          <v-btn color="primary" small outlined class="mx-1"><v-icon dense left>mdi-delete</v-icon> 删除 </v-btn>
+          <v-btn color="error" small outlined class="mx-1"><v-icon dense left>mdi-arrow-expand-all</v-icon> 展开/折叠 </v-btn>
         </div>
+      </template>
+      <template v-slot:expanded-item="{ headers, item }">
+        <td :colspan="headers.length">More info about {{ item.name }}</td>
+      </template>
+      <template slot="item.status" slot-scope="{ item }">
+        <v-switch :input-value="getStatus(item.status)" color="success" hide-details></v-switch>
       </template>
     </v-data-table>
     <v-pagination v-model="page" :length="pageCount"></v-pagination>
@@ -17,106 +59,44 @@
 export default {
   data() {
     return {
+      show: false,
+      expanded: [],
       page: 1,
       pageCount: 0,
       itemsPerPage: 10,
       headers: [
-        {
-          text: "Dessert (100g serving)",
-          align: "start",
-          sortable: false,
-          value: "name"
-        },
-        { text: "Calories", value: "calories" },
-        { text: "Fat (g)", value: "fat" },
-        { text: "Carbs (g)", value: "carbs" },
-        { text: "Protein (g)", value: "protein" },
-        { text: "Iron (%)", value: "iron" }
+        { text: "", value: "data-table-expand" },
+        { text: "菜单名称", value: "name" },
+        { text: "路由地址", value: "path" },
+        { text: "组件位置", value: "component" },
+        { text: "状态", value: "status" },
+        { text: "排序", value: "sort", sortable: true }
       ],
       desserts: [
         {
-          name: "Frozen Yogurt",
-          calories: 159,
-          fat: 6.0,
-          carbs: 24,
-          protein: 4.0,
-          iron: "1%"
+          name: "系统设置",
+          path: "/sys",
+          component: "system/menu",
+          status: 1,
+          sort: 1
         },
         {
-          name: "Ice cream sandwich",
-          calories: 237,
-          fat: 9.0,
-          carbs: 37,
-          protein: 4.3,
-          iron: "1%"
-        },
-        {
-          name: "Eclair",
-          calories: 262,
-          fat: 16.0,
-          carbs: 23,
-          protein: 6.0,
-          iron: "7%"
-        },
-        {
-          name: "Cupcake",
-          calories: 305,
-          fat: 3.7,
-          carbs: 67,
-          protein: 4.3,
-          iron: "8%"
-        },
-        {
-          name: "Gingerbread",
-          calories: 356,
-          fat: 16.0,
-          carbs: 49,
-          protein: 3.9,
-          iron: "16%"
-        },
-        {
-          name: "Jelly bean",
-          calories: 375,
-          fat: 0.0,
-          carbs: 94,
-          protein: 0.0,
-          iron: "0%"
-        },
-        {
-          name: "Lollipop",
-          calories: 392,
-          fat: 0.2,
-          carbs: 98,
-          protein: 0,
-          iron: "2%"
-        },
-        {
-          name: "Honeycomb",
-          calories: 408,
-          fat: 3.2,
-          carbs: 87,
-          protein: 6.5,
-          iron: "45%"
-        },
-        {
-          name: "Donut",
-          calories: 452,
-          fat: 25.0,
-          carbs: 51,
-          protein: 4.9,
-          iron: "22%"
-        },
-        {
-          name: "KitKat",
-          calories: 518,
-          fat: 26.0,
-          carbs: 65,
-          protein: 7,
-          iron: "6%"
+          name: "其他设置",
+          path: "/sysother",
+          component: "system/menu",
+          status: 1,
+          sort: 2
         }
       ]
     };
+  },
+  methods: {
+    getStatus(status) {
+      if (status === 1) return true;
+      else return false;
+    }
   }
 };
 </script>
-<style></style>
+
+<style scoped></style>

@@ -11,7 +11,8 @@
       </v-tabs>
     </template>
     <v-spacer></v-spacer>
-    <v-btn icon large><v-icon>mdi-magnify</v-icon></v-btn>
+    <v-btn large left text class="px-1"><v-icon>mdi-magnify</v-icon>搜索</v-btn>
+    <v-btn large left text class="px-1"><v-icon>mdi-arrow-expand-all</v-icon>全屏</v-btn>
     <v-menu offset-y open-on-hover>
       <template v-slot:activator="{ on, attrs }">
         <v-btn text v-bind="attrs" v-on="on"><v-avatar color="primary" size="36"></v-avatar><span class="pl-2">管理员</span></v-btn>
