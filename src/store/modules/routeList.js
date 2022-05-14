@@ -255,18 +255,6 @@ export default {
         title: "首页",
         path: "/home"
       }
-      // {
-      //   title: "菜单管理",
-      //   path: "/aaa"
-      // },
-      // {
-      //   title: "医院管理",
-      //   path: "/aab"
-      // },
-      // {
-      //   title: "菜单管理",
-      //   path: "/aca"
-      // }
     ]
   }),
   mutations: {

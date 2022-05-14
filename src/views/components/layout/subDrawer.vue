@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer :value="value" @input="$emit('input', $event)" app :width="200">
+  <v-navigation-drawer :value="value" @input="$emit('input', $event)" app :width="222">
     <v-list-item>
       <v-list-item-avatar>
         <v-img src="https://randomuser.me/api/portraits/women/15.jpg"></v-img>
