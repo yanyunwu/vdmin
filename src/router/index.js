@@ -29,8 +29,8 @@ const routeList = store.state.routeList.routeList;
 // 加载路由组件
 const loadview = (component) => {
   if (!component) return () => import(`@/views/components/noComponent.vue`);
-  // return () => import(`@/views/pages/${component}`);
-  return () => Promise.resolve(require(`@/views/pages/${component}`).default);
+  return () => import(`@/views/pages/${component}`);
+  // return () => Promise.resolve(require(`@/views/pages/${component}`).default);
 };
 
 // 处理路由信息
